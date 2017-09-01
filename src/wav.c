@@ -515,6 +515,8 @@ static int startread(sox_format_t * ft)
     char text[256];
     uint32_t      dwLoopPos;
 
+    int sd;
+
     ft->sox_errno = SOX_SUCCESS;
     wav->ignoreSize = ft->signal.length == SOX_IGNORE_LENGTH;
 
@@ -948,6 +950,7 @@ static int startread(sox_format_t * ft)
 
     default:
         wav->numSamples = div_bits(qwDataLength, ft->encoding.bits_per_sample) / ft->signal.channels;
+        sd = 11;
         ft->signal.length = wav->numSamples * ft->signal.channels;
     }
      
@@ -1454,6 +1457,7 @@ static int wavwritehdr(sox_format_t * ft, int second_header)
     if ((!second_header && !ft->signal.length) || 
         wav->numSamples > 0xffffffff) { 
         /* adjust for blockAlign */
+        char aa = 'm';
         blocksWritten = MS_UNSPEC/wBlockAlign;
         dwDataLength = blocksWritten * wBlockAlign;
         dwSamplesWritten = blocksWritten * wSamplesPerBlock;
