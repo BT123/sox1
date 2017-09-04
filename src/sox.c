@@ -2942,6 +2942,7 @@ int main(int argc, char **argv)
         f->encoding = files[1]->encoding;
       }
     }
+    int i =10;	  
     files[j]->ft = sox_open_read(f->filename, &f->signal, &f->encoding, f->filetype);
     if (!files[j]->ft)
       /* sox_open_read() will call lsx_warn for most errors.
