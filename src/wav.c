@@ -949,9 +949,8 @@ static int startread(sox_format_t * ft)
         break;
 
     default:
-        sd = 11;    
         wav->numSamples = div_bits(qwDataLength, ft->encoding.bits_per_sample) / ft->signal.channels;
-        
+        sd = 2;    
         ft->signal.length = wav->numSamples * ft->signal.channels;
     }
      
